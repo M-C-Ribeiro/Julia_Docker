@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Julia Dashboard
+{% endblock %}
+
+{% block content %}
+    <h2 style="text-align: center;">Cadastro de Venda</h2>
+    <hr>
+    <div class="container">
+        <form method="POST" class="form-register" style="color: #736222;">
+            {{ form.hidden_tag() }}
+            
+            {{ form.filial.label() }}
+            {{ form.filial(class="form-control", placeholder="Informe a filial")}}
+            
+            {{ form.cidade.label() }}
+            {{ form.cidade(class="form-control", placeholder="Informe a cidade")}}
+            
+            {{ form.genero.label() }}
+            {{ form.genero(class="form-control", placeholder="Informe o sexo")}}
+
+            {{ form.tipo.label() }}
+            {{ form.tipo(class="form-control", placeholder="Informe o setor do Produto")}}
+
+            {{ form.valor.label() }}
+            {{ form.valor(class="form-control", placeholder="Informe o valor")}}
+            
+            {{ form.quantidade.label() }}
+            {{ form.quantidade(class="form-control", placeholder="Informe a quantidade")}}
+            
+            {{ form.taxa.label() }}
+            {{ form.taxa(class="form-control", placeholder="Informe a taxa")}}
+
+            {{ form.total.label() }}
+            {{ form.total(class="form-control", placeholder="Informe o total")}}
+
+            {{ form.data.label() }}
+            {{ form.data(class="form-control", placeholder="Informe a data")}}
+
+            {{ form.hora.label() }}
+            {{ form.hora(class="form-control", placeholder="Informe a hora")}}
+
+            {{ form.pagamento.label() }}
+            {{ form.pagamento(class="form-control", placeholder="Informe o método de pagamento")}}
+
+            {{ form.custo.label() }}
+            {{ form.custo(class="form-control", placeholder="Informe o custo de produção")}}
+
+            {{ form.porcentagem.label() }}
+            {{ form.porcentagem(class="form-control", placeholder="Informe o valor recebido")}}
+
+            {{ form.lucro.label() }}
+            {{ form.lucro(class="form-control", placeholder="Informe o lucro")}}
+            
+            {{ form.avaliacao.label() }}
+            {{ form.avaliacao(class="form-control", placeholder="Informe a avaliacao")}}
+            
+            <div class="d-grid" style="padding-top: 50px;">
+                {{ form.submit(class="btn btn-md btn-light")}}
+            </div>
+        </form>
+    </div>
+{% endblock %}
