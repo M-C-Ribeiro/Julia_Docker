@@ -25,3 +25,13 @@ services:
     volumes:
       - ./app:/src
 
+julia:
+    image: julialang/julia:latest 
+    volumes:
+      - ./app:/src 
+    working_dir: /code  
+    command: julia -e 'using Pkg; Pkg.add("Stipple"); Pkg.add("StippleUI"); Pkg.add("StipplePlotly"); Pkg.add("SQLite"); Pkg.add("DataFrames");'  
+    depends_on:
+      - db
+    links:
+      - db

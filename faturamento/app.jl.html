@@ -1,0 +1,23 @@
+<header class="st-header q-pa-sm">
+    <h2>Julia Dashboards</h2>
+    <h4>Controle de Vendas</h4>
+</header>
+<div class="row">
+    <div class="st-col col-12 col-sm st-module">
+        <h3>Filtros<br /></h3>
+        <div class="row">
+            <div class="st-col col-12">
+                <h6>Filial</h6>
+                <q-select :label-color="true"></q-select>
+            </div>
+        </div>
+    </div>
+    <div class="st-col col-12 col-sm st-module">
+        <plotly :data="[{
+      x: [2, 3, 4, 5],
+      y: [16, 5, 11, 9],
+      mode: 'lines',
+      type: 'scatter'
+    }]"></plotly>
+    </div>
+</div>
