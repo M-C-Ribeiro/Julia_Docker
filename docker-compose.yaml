@@ -13,7 +13,7 @@ services:
       - FLASK_RUN_HOST=0.0.0.0
 
     command: >
-      sh -c "pip install flask flask_sqlalchemy flask-wtf && flask run"
+      sh -c "pip install flask flask_sqlalchemy flask-wtf && flask --app despysas run"
 
     depends_on:
       - db
@@ -24,14 +24,18 @@ services:
     image: mtsribeiro/sqlite3-image:0.1
     volumes:
       - ./app:/src
+    working_dir: ./app:/src
 
-julia:
-    image: julialang/julia:latest 
-    volumes:
-      - ./app:/src 
-    working_dir: /code  
-    command: julia -e 'using Pkg; Pkg.add("Stipple"); Pkg.add("StippleUI"); Pkg.add("StipplePlotly"); Pkg.add("SQLite"); Pkg.add("DataFrames");'  
-    depends_on:
-      - db
-    links:
-      - db
+    command: sqlite3 ${pwd}/vendas.sqlite
+
+  julia:
+      image: julia:latest 
+      volumes:
+        - ./app:/src 
+      working_dir: /src/faturamento
+      command: julia -e 'using Pkg; Pkg.add("Stipple"); Pkg.add("StippleUI"); Pkg.add("StipplePlotly"); Pkg.add("SQLite"); Pkg.add("DataFrames"); julia app.jl'  
+      depends_on:
+        - db
+      links:
+        - db
+  
